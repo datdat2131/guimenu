@@ -1,0 +1,195 @@
+# ======================================================================
+#  SÁCH HƯỚNG DẪN (mở bằng [book] <id> trong menus.yml)
+#  - Mỗi "-" là một trang. Trang sách ~14 dòng, nên giữ dưới ~250 ký tự.
+#  - &0 = chữ đen (màu mặc định của sách). Hỗ trợ {player}.
+#  - Nội dung theo cấu hình MẶC ĐỊNH của các plugin Astrax; nếu bạn đã
+#    đổi số liệu trong plugin đó thì sửa lại ở đây cho khớp.
+# ======================================================================
+books:
+  start:
+    title: "Hướng dẫn tân thủ"
+    author: "BoxMine RPG"
+    pages:
+      - |-
+        &6&lCHÀO MỪNG {player}
+
+        &0Đây là &lBoxMine RPG&0, có nguyên tố, nhiệm vụ, danh hiệu và team.
+
+        Gõ &9/menu &0bất cứ lúc nào để mở menu server.
+      - |-
+        &6&l1. Nhận đồ
+
+        &0Gõ &9/kit &0để xem và nhận kit của bạn.
+        Gõ &9/rank &0để xem rank nào có quyền lợi và kit gì.
+      - |-
+        &6&l2. Chọn nguyên tố
+
+        &0Gõ &9/elementer &0và chọn một nguyên tố miễn phí.
+        Phím &9F &0để tung kỹ năng.
+      - |-
+        &6&l3. Nhiệm vụ
+
+        &0Gõ &9/quest &0để làm nhiệm vụ ngày/tuần, nhận tiền, Token và EXP.
+        Hoàn thành nhiệm vụ để mở &9danh hiệu &0(&9/title&0).
+      - |-
+        &6&l4. Chơi cùng bạn bè
+
+        &0Lập team: &9/team create <tên>&0
+        Mời bạn: &9/team invite <tên>&0
+        Chat riêng: &9/tc
+      - |-
+        &6&lCần giúp?
+
+        &0Mở &9/menu &0→ Hướng dẫn hệ thống để đọc chi tiết từng tính năng.
+
+        Chúc bạn chơi vui!
+  elementer:
+    title: "Hướng dẫn Nguyên Tố RPG"
+    author: "BoxMine RPG"
+    pages:
+      - |-
+        &5&lNGUYÊN TỐ RPG
+        &0Lệnh: &9/elementer
+
+        &0Có 6 nguyên tố thường: Hỏa, Băng, Lôi, Thổ, Phong, Quang. Chọn &lmột &0nguyên tố đầu tiên miễn phí trong menu.
+      - |-
+        &5&lLÊN CẤP
+
+        &0Nhận EXP khi đào quặng, giết quái và PvP. Cấp 1-50, mỗi cấp được điểm kỹ năng để nâng kỹ năng (&9/elementer skills&0).
+      - |-
+        &5&lTUNG KỸ NĂNG
+
+        &9F&0: tung kỹ năng đang chọn
+        &9Shift+F&0: đổi kỹ năng
+        Hoặc &9/elementer cast 1-3&0.
+        Mỗi kỹ năng có hồi chiêu.
+      - |-
+        &5&lTƯƠNG KHẮC
+
+        &0Hỏa → Băng → Phong → Thổ → Lôi → Hỏa.
+        Quang trung lập, mạnh hơn trước xác sống.
+        Đánh đúng hệ khắc gây nhiều sát thương hơn.
+      - |-
+        &5&lNGUYÊN TỐ THỨ 2, 3
+
+        &0Tối đa 3 nguyên tố. Từ cái thứ hai chỉ nhận bằng &lVé Nguyên Tố&0: rớt từ boss hoặc đổi Tinh Thể (&9/elementer exchange&0). Chuyển: &9/elementer switch&0.
+      - |-
+        &5&lBOSS
+
+        &0Boss nguyên tố rơi Tinh Thể (cần gây đủ sát thương). Boss huyền thoại xuất hiện định kỳ, báo toàn server, có thể rơi vé Bóng Tối / Rồng.
+      - |-
+        &5&lHÀO QUANG & CÁNH
+
+        &0Hào quang dưới chân mở ở cấp 5: &9/elementer aura&0.
+        Cánh rồng (nguyên tố Rồng): &9/elementer wings&0.
+  nguyento:
+    title: "Hướng dẫn Nguyên Tố Bay"
+    author: "BoxMine RPG"
+    pages:
+      - |-
+        &d&lNGUYÊN TỐ BAY
+        &0Lệnh: &9/nt
+
+        &0Nguyên tố bay quanh người bạn, cho buff và nội tại. 6 nguyên tố thường: Lửa, Nước, Đất, Gió, Sét, Băng. 2 huyền thoại: Bóng Tối, Ánh Sáng.
+      - |-
+        &d&lSỞ HỮU
+
+        &0Có &lCuộn Giấy Nguyên Tố &0trong tay, bấm &9chuột phải &0để lĩnh ngộ nguyên tố đó. Đã có rồi thì cuộn không bị mất.
+      - |-
+        &d&lTRANG BỊ
+
+        &0Gõ &9/nt &0rồi chọn nguyên tố vào 3 ô: Trên đầu, Vai trái, Vai phải. Bấm lại để tắt.
+      - |-
+        &d&lCHIÊU THỨC
+
+        &0Bóng Tối và Ánh Sáng cho vật phẩm kỹ năng: &9chuột phải &0để dùng chiêu. Vật phẩm không vứt/cất rương được.
+      - |-
+        &d&lLƯU Ý
+
+        &0Thoát game sẽ tự gỡ nguyên tố: vào lại gõ &9/nt &0để trang bị lại. Xem chỉ số: &9/nt stats&0.
+        Khác với &9/elementer &0(hệ RPG có cấp và kỹ năng).
+  quest:
+    title: "Hướng dẫn Nhiệm vụ"
+    author: "BoxMine RPG"
+    pages:
+      - |-
+        &6&lNHIỆM VỤ
+        &0Lệnh: &9/quest &0(&9/nv&0)
+
+        &0Có nhiệm vụ ngày, tuần, PvP (và cốt truyện, Guild, sự kiện khi admin bật).
+      - |-
+        &6&lNHẬN THƯỞNG
+
+        &0Làm xong thì mở menu bấm để nhận, hoặc &9/quest claimall&0.
+        Thưởng: tiền, Astrax Token, Quest EXP, vật phẩm, danh hiệu.
+      - |-
+        &6&lCẤP QUEST
+
+        &0Quest EXP giúp lên cấp Quest.
+        Hồ sơ: &9/quest profile
+        &0Token: &9/quest tokens
+        &0Xếp hạng: &9/quest top
+      - |-
+        &6&lLÀM MỚI
+
+        &0Nhiệm vụ ngày/tuần tự làm mới theo giờ máy chủ (mặc định 00:00). Đào khối tự đặt, farm spawner, treo máy không được tính.
+  titles:
+    title: "Hướng dẫn Danh hiệu"
+    author: "BoxMine RPG"
+    pages:
+      - |-
+        &e&lDANH HIỆU
+        &0Lệnh: &9/title
+
+        &0Danh hiệu mở khóa bằng nhiệm vụ, mỗi cái có &lbuff &0và &lnội tại &0riêng, hiện trước tên trong Tab.
+      - |-
+        &e&lCÁCH DÙNG
+
+        &9/title &0mở menu: bấm danh hiệu đã mở để đeo/gỡ. Danh hiệu chưa mở hiện nhiệm vụ cần làm và tiến độ.
+      - |-
+        &e&lVÍ DỤ
+
+        &0Tân Thủ: online 15 phút.
+        Chiến Binh: hạ 10 người.
+        Nhà Thám Hiểm: đi 2000 block.
+        Thợ Săn Boss: hạ 10 boss.
+        VIP: rank VIP3 trở lên.
+      - |-
+        &e&lLƯU Ý
+
+        &0Danh hiệu hiếm (Huyền Thoại trở lên) báo toàn server khi mở khóa. Hạ cùng một người nhiều lần liên tiếp không tính (chống farm).
+  team:
+    title: "Hướng dẫn Team"
+    author: "BoxMine RPG"
+    pages:
+      - |-
+        &a&lTEAM
+        &0Lệnh: &9/team &0(&9/t&0)
+
+        &0Gõ &9/team &0để mở menu team.
+        Tạo team: &9/team create <tên>&0
+      - |-
+        &a&lMỜI & QUẢN LÝ
+
+        &9/team invite <tên>&0: mời
+        &9/team accept&0 / &9deny
+        &9/team kick&0, &9leave
+        &9/team promote&0, &9demote
+        &9/team transfer
+      - |-
+        &a&lCHAT & PVP
+
+        &9/tc &0bật/tắt chat team.
+        &9/team pvp &0bật/tắt đánh đồng đội.
+        Đồng đội phát sáng và hiện [Tên team] trên đầu.
+      - |-
+        &a&lKHU VỰC & WAR
+
+        &9/team zones &0xem khu vực
+        &9/team claim <zone> &0chiếm khu
+        &9/team war declare <team> &0thách đấu team khác
+      - |-
+        &a&lXẾP HẠNG
+
+        &9/team top [points|kills|wins]&0
+        Team đứng top 1-5 nhận buff (tốc độ, hồi máu, sát thương...).

@@ -1,0 +1,27 @@
+# ===== AstraxMenu - cấu hình chính =====
+# Sửa xong gõ /astraxmenu reload (không cần restart).
+# Menu: menus.yml | Rank: ranks.yml | Sách hướng dẫn: guides.yml | Tin nhắn: messages.yml
+
+main-menu: main            # menu mở bằng /menu (không có tham số)
+
+gui:
+  click-cooldown-ms: 250   # chống bấm liên tục
+  click-sound: "ui.button.click"   # "none" để tắt. Nên dùng dạng có dấu chấm: block.chest.open
+  filler-material: BLACK_STAINED_GLASS_PANE
+  filler-name: " "
+
+join:
+  hint:
+    enabled: true          # nhắc người chơi gõ /menu khi vào server
+    message: "&7Gõ &e/menu &7để xem hướng dẫn, &e/rank &7để xem quyền lợi rank."
+  first-join-menu:
+    enabled: true          # tự mở menu cho người chơi vào server LẦN ĐẦU
+    menu: main
+  item:
+    enabled: false         # vật phẩm bấm chuột phải để mở menu (ví dụ Sao Địa Ngục)
+    slot: 8                # ô hotbar 0-8 (8 = ô cuối)
+    material: NETHER_STAR
+    name: "&6&lMenu Server &7(Chuột phải)"
+    lore:
+      - "&7Bấm chuột phải để mở menu."
+    menu: main

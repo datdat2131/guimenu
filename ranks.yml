@@ -1,0 +1,119 @@
+# ======================================================================
+#  /rank - xem quyền lợi các rank (rank của server làm bằng /kit)
+#  Sửa xong gõ /astraxmenu reload. Kiểm tra: /astraxmenu check
+#
+#  Plugin tự ĐỌC kits.yml của EssentialsX để hiện đúng vật phẩm trong
+#  từng kit (chỉ đọc, không sửa). Phần "perks"/"description" là chữ bạn
+#  tự viết (quyền lợi ngoài kit: fly, /home thêm, prefix...).
+#  >>> CÁC RANK/PERK DƯỚI ĐÂY LÀ MẪU - HÃY SỬA THEO SERVER CỦA BẠN. <<<
+# ======================================================================
+settings:
+  title: "&8✦ &6&lRANK &8✦ &7Quyền lợi"
+  detail-title: "&8Rank: {rank}"
+  rows: 4                       # 3-6 hàng cho trang danh sách
+  slots: [10, 11, 12, 13, 14, 15, 16]   # ô của từng rank theo thứ tự bên dưới (thấp -> cao)
+  default-rank-name: "&7Thành viên"
+  back-menu: main               # nút quay lại mở menu này ("" = không có nút)
+  kit-command: "kit {kit}"      # lệnh chạy khi bấm nhận kit (người chơi tự gõ). Có thể đổi thành "ekit {kit}"...
+  require-owned-to-claim: true  # true = chưa có rank thì không chạy lệnh kit
+  show-kit-contents: true       # hiện vật phẩm thật trong kit (đọc từ Essentials)
+  kits-file: auto               # auto = tự tìm plugins/Essentials/kits.yml. Hoặc đường dẫn tính từ thư mục plugins/
+
+# Chữ hiển thị (có thể đổi). {kit} {price} {rank} {cooldown}
+texts:
+  status-current: "&6★ Rank hiện tại của bạn"
+  status-owned: "&a✔ Bạn đã sở hữu rank này"
+  status-locked: "&c✖ Bạn chưa sở hữu rank này"
+  perks-title: "&6Quyền lợi:"
+  kit-line: "&eKit: &f/kit {kit}"
+  kit-cooldown: "&7Hồi kit: &f{cooldown}"
+  kit-once: "Chỉ dùng 1 lần"
+  kit-nocd: "Không hồi"
+  price-line: "&7Cách nhận: &f{price}"
+  hint-left: "&eChuột trái: &7xem vật phẩm trong kit"
+  hint-right: "&eChuột phải: &7nhận kit &f/kit {kit}"
+  header-name: "&e{player}"
+  header-current: "&7Rank của bạn: {rank}"
+  header-hint-1: "&eChuột trái &7vào rank: xem vật phẩm trong kit"
+  header-hint-2: "&eChuột phải &7vào rank: nhận kit"
+  back: "&c« Quay lại menu"
+  close: "&cĐóng"
+  back-list: "&c« Danh sách rank"
+  claim-name: "&a&lNhận kit /kit {kit}"
+  claim-lore: "&7Bấm để chạy lệnh nhận kit."
+  more-items: "&7...và &f{n} &7vật phẩm khác"
+  no-kit: "&7Rank này không có kit."
+  preview-off: "&7Xem trước kit đang tắt."
+  kit-unreadable: "&7Không đọc được kit &f{kit}&7 từ kits.yml."
+  empty-title: "&cKhông có nội dung để xem trước"
+  kit-others: "&7+ {n} phần thưởng đặc biệt khác"
+
+# Mỗi rank:
+#   name        tên hiển thị
+#   icon        vật phẩm làm biểu tượng
+#   kit         tên kit trong /kit ("" = rank không có kit)
+#   permission  quyền để coi là "đang có rank" (mặc định group.<id> của LuckPerms).
+#               Nếu bạn phân quyền kit bằng essentials.kits.<tên> thì đặt quyền đó ở đây.
+#   price       cách nhận rank (chữ tự do)
+#   description / perks   dòng chữ hiển thị
+ranks:
+  vip1:
+    name: "&a&lVIP 1"
+    icon: IRON_INGOT
+    kit: vip1
+    permission: group.vip1
+    price: "Liên hệ Admin / nạp thẻ"
+    description: ["&7Rank khởi đầu."]
+    perks:
+      - "&7▪ Nhận kit &e/kit vip1"
+      - "&7▪ (thêm quyền lợi khác của VIP 1 tại đây)"
+  vip2:
+    name: "&e&lVIP 2"
+    icon: GOLD_INGOT
+    kit: vip2
+    permission: group.vip2
+    price: "Liên hệ Admin / nạp thẻ"
+    description: ["&7Gồm quyền lợi VIP 1 và hơn thế nữa."]
+    perks:
+      - "&7▪ Nhận kit &e/kit vip2"
+      - "&7▪ (thêm quyền lợi khác của VIP 2 tại đây)"
+  vip3:
+    name: "&b&lVIP 3"
+    icon: DIAMOND
+    kit: vip3
+    permission: group.vip3
+    price: "Liên hệ Admin / nạp thẻ"
+    description: ["&7Mở khóa danh hiệu VIP trong &e/title&7."]
+    perks:
+      - "&7▪ Nhận kit &e/kit vip3"
+      - "&7▪ Mở khóa danh hiệu VIP"
+  vip4:
+    name: "&2&lVIP 4"
+    icon: EMERALD
+    kit: vip4
+    permission: group.vip4
+    price: "Liên hệ Admin / nạp thẻ"
+    description: []
+    perks:
+      - "&7▪ Nhận kit &e/kit vip4"
+      - "&7▪ Mở khóa danh hiệu VIP"
+  vip5:
+    name: "&c&lVIP 5"
+    icon: NETHERITE_INGOT
+    kit: vip5
+    permission: group.vip5
+    price: "Liên hệ Admin / nạp thẻ"
+    description: []
+    perks:
+      - "&7▪ Nhận kit &e/kit vip5"
+      - "&7▪ Mở khóa danh hiệu VIP"
+  vipmax:
+    name: "&d&lVIP MAX"
+    icon: NETHER_STAR
+    kit: vipmax
+    permission: group.vipmax
+    price: "Liên hệ Admin / nạp thẻ"
+    description: ["&7Rank cao nhất."]
+    perks:
+      - "&7▪ Nhận kit &e/kit vipmax"
+      - "&7▪ Mở khóa danh hiệu VIP"

@@ -1,0 +1,763 @@
+# ======================================================================
+#  MENU GUI - mọi menu của server nằm ở đây. Sửa xong: /astraxmenu reload
+#  Kiểm tra liên kết giữa các menu: /astraxmenu check
+#
+#  Mỗi menu:  title, rows (1-6), filler (true/false), items
+#  Mỗi nút:   slot (hoặc slots: [..]), material, name, lore, glow, amount,
+#             skull-owner (chỉ PLAYER_HEAD), actions (mọi click),
+#             left-actions / right-actions (tách chuột trái/phải)
+#
+#  Hành động (mỗi dòng "[loại] nội dung"):
+#    [player] lệnh      người chơi tự gõ lệnh (không cần dấu /)
+#    [console] lệnh     console chạy lệnh (chỉ đặt lệnh bạn tin tưởng)
+#    [open] menu        mở menu khác trong file này
+#    [rank] [id]        mở /rank (hoặc chi tiết một rank)
+#    [book] id          mở sách trong guides.yml
+#    [close]            đóng menu
+#    [message] chữ      gửi tin nhắn
+#    [sound] key        phát âm thanh, vd block.note_block.pling
+#    [link] url | chữ   gửi liên kết bấm được
+#  Biến: {player} {online} {max} {rank} và PlaceholderAPI (%...%).
+#  Số ô: hàng 1 = 0-8, hàng 2 = 9-17, ... hàng 6 = 45-53.
+# ======================================================================
+menus:
+
+  main:
+    title: "&8✦ &6&lBoxMine RPG &8✦"
+    rows: 6
+    items:
+      intro:
+        slot: 4
+        material: NETHER_STAR
+        glow: true
+        name: "&6&lBoxMine RPG"
+        lore:
+          - " "
+          - "&7Chào mừng &e{player}&7!"
+          - "&7Server RPG nguyên tố, nhiệm vụ,"
+          - "&7danh hiệu và team."
+          - " "
+          - "&7Đang online: &a{online}&7/&f{max}"
+          - "&7Rank của bạn: {rank}"
+      start:
+        slot: 19
+        material: WRITABLE_BOOK
+        name: "&a&lHướng dẫn tân thủ"
+        lore:
+          - "&7Mới vào server? Bắt đầu từ đây."
+          - " "
+          - "&eChuột trái: &7đọc sách hướng dẫn"
+          - "&eChuột phải: &7xem các bước"
+        left-actions: ["[book] start"]
+        right-actions: ["[open] g_start"]
+      guides:
+        slot: 20
+        material: KNOWLEDGE_BOOK
+        name: "&b&lHướng dẫn hệ thống"
+        lore:
+          - "&7Nguyên tố, nhiệm vụ, danh hiệu, team..."
+          - " "
+          - "&eNhấp để mở"
+        actions: ["[open] guide"]
+      commands:
+        slot: 21
+        material: COMMAND_BLOCK
+        name: "&d&lDanh sách lệnh"
+        lore:
+          - "&7Các lệnh người chơi hay dùng."
+          - " "
+          - "&eNhấp để mở"
+        actions: ["[open] commands"]
+      rank:
+        slot: 23
+        material: DIAMOND
+        glow: true
+        name: "&b&lRank & Quyền lợi"
+        lore:
+          - "&7Xem rank nào có quyền lợi và kit gì."
+          - "&7Rank của bạn: {rank}"
+          - " "
+          - "&eNhấp để mở &7(&f/rank&7)"
+        actions: ["[rank]"]
+      kit:
+        slot: 24
+        material: CHEST
+        name: "&6&lKit"
+        lore:
+          - "&7Xem danh sách kit bạn dùng được."
+          - " "
+          - "&eNhấp để chạy &f/kit"
+        actions: ["[close]", "[player] kit"]
+      rules:
+        slot: 25
+        material: OAK_SIGN
+        name: "&c&lNội quy"
+        lore:
+          - "&7Vui lòng đọc trước khi chơi."
+          - " "
+          - "&eNhấp để mở"
+        actions: ["[open] rules"]
+      quest:
+        slot: 38
+        material: CLOCK
+        name: "&e&lNhiệm vụ"
+        lore:
+          - "&7Nhiệm vụ ngày / tuần / PvP."
+          - " "
+          - "&eNhấp để mở &7(&f/quest&7)"
+        actions: ["[close]", "[player] quest"]
+      title:
+        slot: 39
+        material: NAME_TAG
+        name: "&6&lDanh hiệu"
+        lore:
+          - "&7Đeo danh hiệu để nhận buff."
+          - " "
+          - "&eNhấp để mở &7(&f/title&7)"
+        actions: ["[close]", "[player] title"]
+      elementer:
+        slot: 40
+        material: BLAZE_POWDER
+        name: "&5&lNguyên Tố RPG"
+        lore:
+          - "&7Chọn nguyên tố, nâng kỹ năng."
+          - " "
+          - "&eNhấp để mở &7(&f/elementer&7)"
+        actions: ["[close]", "[player] elementer"]
+      nguyento:
+        slot: 41
+        material: AMETHYST_SHARD
+        name: "&d&lNguyên Tố Bay"
+        lore:
+          - "&7Trang bị nguyên tố bay quanh người."
+          - " "
+          - "&eNhấp để mở &7(&f/nt&7)"
+        actions: ["[close]", "[player] nt"]
+      team:
+        slot: 42
+        material: WHITE_BANNER
+        name: "&a&lTeam"
+        lore:
+          - "&7Lập team, chiếm khu vực, team war."
+          - " "
+          - "&eNhấp để mở &7(&f/team&7)"
+        actions: ["[close]", "[player] team"]
+      discord:
+        slot: 47
+        material: PAPER
+        name: "&9&lDiscord"
+        lore:
+          - "&7Tham gia cộng đồng, nhận hỗ trợ."
+          - " "
+          - "&eNhấp để nhận liên kết"
+        actions: ["[close]", "[link] https://discord.gg/doi-link-cua-ban | &9&n[Bấm vào đây để vào Discord]"]
+      close:
+        slot: 49
+        material: BARRIER
+        name: "&cĐóng"
+        actions: ["[close]"]
+      website:
+        slot: 51
+        material: COMPASS
+        name: "&b&lWebsite"
+        lore:
+          - "&7Tin tức, cửa hàng, bảng xếp hạng."
+          - " "
+          - "&eNhấp để nhận liên kết"
+        actions: ["[close]", "[link] https://doi-link-website-cua-ban.vn | &b&n[Bấm vào đây để mở website]"]
+
+  guide:
+    title: "&8✦ &b&lHướng dẫn hệ thống &8✦"
+    rows: 4
+    items:
+      g_start:
+        slot: 19
+        material: WRITABLE_BOOK
+        name: "&a&lTân thủ"
+        lore:
+          - "&7Các bước đầu tiên."
+          - " "
+          - "&eNhấp để xem hướng dẫn"
+        actions: ["[open] g_start"]
+      g_elementer:
+        slot: 21
+        material: BLAZE_POWDER
+        name: "&5&lNguyên Tố RPG"
+        lore:
+          - "&7/elementer - cấp, kỹ năng, boss."
+          - " "
+          - "&eNhấp để xem hướng dẫn"
+        actions: ["[open] g_elementer"]
+      g_nguyento:
+        slot: 22
+        material: AMETHYST_SHARD
+        name: "&d&lNguyên Tố Bay"
+        lore:
+          - "&7/nt - nguyên tố bay quanh người."
+          - " "
+          - "&eNhấp để xem hướng dẫn"
+        actions: ["[open] g_nguyento"]
+      g_quest:
+        slot: 23
+        material: CLOCK
+        name: "&e&lNhiệm vụ"
+        lore:
+          - "&7/quest - ngày, tuần, PvP."
+          - " "
+          - "&eNhấp để xem hướng dẫn"
+        actions: ["[open] g_quest"]
+      g_titles:
+        slot: 24
+        material: NAME_TAG
+        name: "&6&lDanh hiệu"
+        lore:
+          - "&7/title - buff và nội tại."
+          - " "
+          - "&eNhấp để xem hướng dẫn"
+        actions: ["[open] g_titles"]
+      g_team:
+        slot: 25
+        material: WHITE_BANNER
+        name: "&a&lTeam"
+        lore:
+          - "&7/team - đồng đội, khu vực, war."
+          - " "
+          - "&eNhấp để xem hướng dẫn"
+        actions: ["[open] g_team"]
+      back:
+        slot: 27
+        material: ARROW
+        name: "&c« Quay lại"
+        actions: ["[open] main"]
+      close:
+        slot: 31
+        material: BARRIER
+        name: "&cĐóng"
+        actions: ["[close]"]
+
+  g_start:
+    title: "&8✦ &a&lHướng dẫn tân thủ &8✦"
+    rows: 4
+    items:
+      step1:
+        slot: 10
+        material: CHEST
+        name: "&e1. Nhận đồ"
+        lore:
+          - "&7Gõ &f/kit &7để xem và nhận kit."
+          - "&7Gõ &f/rank &7để xem quyền lợi rank."
+      step2:
+        slot: 11
+        material: BLAZE_POWDER
+        name: "&e2. Chọn nguyên tố"
+        lore:
+          - "&7Gõ &f/elementer &7và chọn 1 nguyên tố"
+          - "&7miễn phí. Phím &fF &7để tung kỹ năng."
+      step3:
+        slot: 12
+        material: CLOCK
+        name: "&e3. Làm nhiệm vụ"
+        lore:
+          - "&7Gõ &f/quest &7: nhiệm vụ ngày/tuần."
+          - "&7Nhận tiền, Token, EXP, danh hiệu."
+      step4:
+        slot: 13
+        material: NAME_TAG
+        name: "&e4. Đeo danh hiệu"
+        lore:
+          - "&7Gõ &f/title &7: mở khóa bằng nhiệm vụ,"
+          - "&7đeo để nhận buff."
+      step5:
+        slot: 14
+        material: WHITE_BANNER
+        name: "&e5. Lập team"
+        lore:
+          - "&7Gõ &f/team create <tên>"
+          - "&7Mời bạn: &f/team invite <tên>"
+      step6:
+        slot: 15
+        material: DIAMOND
+        name: "&e6. Xem rank"
+        lore:
+          - "&7Gõ &f/rank &7để biết quyền lợi từng rank."
+      step7:
+        slot: 16
+        material: OAK_SIGN
+        name: "&e7. Đọc nội quy"
+        lore:
+          - "&7Mở menu chính → Nội quy."
+      back:
+        slot: 27
+        material: ARROW
+        name: "&c« Quay lại"
+        actions: ["[open] guide"]
+      book:
+        slot: 31
+        material: WRITABLE_BOOK
+        glow: true
+        name: "&a&lĐọc sách hướng dẫn"
+        lore:
+          - "&7Bản đầy đủ dạng sách."
+          - " "
+          - "&eNhấp để đọc"
+        actions: ["[book] start"]
+
+  g_elementer:
+    title: "&8✦ &5&lHướng dẫn Nguyên Tố RPG &8✦"
+    rows: 4
+    items:
+      step1:
+        slot: 10
+        material: BLAZE_POWDER
+        name: "&e1. Chọn nguyên tố"
+        lore:
+          - "&7Nguyên tố đầu tiên miễn phí, chọn trong"
+          - "&7menu &f/elementer &7(Hỏa, Băng, Lôi, Thổ,"
+          - "&7Phong, Quang). Bấm 2 lần để xác nhận."
+      step2:
+        slot: 11
+        material: EXPERIENCE_BOTTLE
+        name: "&e2. Lên cấp"
+        lore:
+          - "&7Nhận EXP khi đào quặng, giết quái, PvP."
+          - "&7Cấp 1-50, mỗi cấp có điểm kỹ năng."
+          - "&7Nâng kỹ năng: &f/elementer skills"
+      step3:
+        slot: 12
+        material: BLAZE_ROD
+        name: "&e3. Tung kỹ năng"
+        lore:
+          - "&fF &7: tung kỹ năng đang chọn"
+          - "&fShift+F &7: đổi kỹ năng"
+          - "&7Hoặc &f/elementer cast 1-3"
+      step4:
+        slot: 13
+        material: TARGET
+        name: "&e4. Tương khắc"
+        lore:
+          - "&7Hỏa → Băng → Phong → Thổ → Lôi → Hỏa"
+          - "&7Quang trung lập, mạnh với xác sống."
+      step5:
+        slot: 14
+        material: PAPER
+        name: "&e5. Nguyên tố thứ 2, 3"
+        lore:
+          - "&7Tối đa 3 nguyên tố. Từ cái thứ hai chỉ"
+          - "&7nhận bằng &fVé Nguyên Tố &7(boss rớt hoặc"
+          - "&7đổi Tinh Thể: &f/elementer exchange&7)."
+          - "&7Chuyển: &f/elementer switch <nguyên tố>"
+      step6:
+        slot: 15
+        material: WITHER_SKELETON_SKULL
+        name: "&e6. Boss"
+        lore:
+          - "&7Boss rơi Tinh Thể (gây đủ sát thương)."
+          - "&7Boss huyền thoại xuất hiện định kỳ,"
+          - "&7báo toàn server, rớt vé Bóng Tối / Rồng."
+      step7:
+        slot: 16
+        material: FIREWORK_STAR
+        name: "&e7. Hào quang & cánh"
+        lore:
+          - "&7Hào quang mở ở cấp 5: &f/elementer aura"
+          - "&7Cánh rồng: &f/elementer wings"
+      back:
+        slot: 27
+        material: ARROW
+        name: "&c« Quay lại"
+        actions: ["[open] guide"]
+      book:
+        slot: 31
+        material: WRITABLE_BOOK
+        glow: true
+        name: "&a&lĐọc sách hướng dẫn"
+        lore:
+          - "&7Bản đầy đủ dạng sách."
+          - " "
+          - "&eNhấp để đọc"
+        actions: ["[book] elementer"]
+      open:
+        slot: 35
+        material: LIME_DYE
+        name: "&a&lMở Nguyên Tố RPG"
+        lore:
+          - "&7Chạy lệnh &f/elementer"
+          - " "
+          - "&eNhấp để mở"
+        actions: ["[close]", "[player] elementer"]
+
+  g_nguyento:
+    title: "&8✦ &d&lHướng dẫn Nguyên Tố Bay &8✦"
+    rows: 4
+    items:
+      step1:
+        slot: 10
+        material: AMETHYST_SHARD
+        name: "&e1. Nguyên tố bay"
+        lore:
+          - "&7Nguyên tố bay quanh người, cho buff"
+          - "&7và nội tại. Mở bằng &f/nt"
+      step2:
+        slot: 11
+        material: PAPER
+        name: "&e2. Sở hữu"
+        lore:
+          - "&7Cầm &fCuộn Giấy Nguyên Tố &7và bấm"
+          - "&7chuột phải để lĩnh ngộ."
+      step3:
+        slot: 12
+        material: ENCHANTING_TABLE
+        name: "&e3. Trang bị"
+        lore:
+          - "&7Tối đa 3 ô: Trên đầu, Vai trái, Vai phải."
+          - "&7Chọn nguyên tố trong &f/nt&7, bấm lại để tắt."
+      step4:
+        slot: 13
+        material: NETHER_STAR
+        name: "&e4. Huyền thoại"
+        lore:
+          - "&7Bóng Tối và Ánh Sáng cho vật phẩm kỹ năng."
+          - "&7Bấm chuột phải để dùng chiêu."
+      step5:
+        slot: 14
+        material: BARRIER
+        name: "&e5. Lưu ý"
+        lore:
+          - "&7Thoát game sẽ tự gỡ nguyên tố."
+          - "&7Vào lại gõ &f/nt &7để trang bị. Xem chỉ số:"
+          - "&f/nt stats"
+      back:
+        slot: 27
+        material: ARROW
+        name: "&c« Quay lại"
+        actions: ["[open] guide"]
+      book:
+        slot: 31
+        material: WRITABLE_BOOK
+        glow: true
+        name: "&a&lĐọc sách hướng dẫn"
+        lore:
+          - "&7Bản đầy đủ dạng sách."
+          - " "
+          - "&eNhấp để đọc"
+        actions: ["[book] nguyento"]
+      open:
+        slot: 35
+        material: LIME_DYE
+        name: "&a&lMở Nguyên Tố Bay"
+        lore:
+          - "&7Chạy lệnh &f/nt"
+          - " "
+          - "&eNhấp để mở"
+        actions: ["[close]", "[player] nt"]
+
+  g_quest:
+    title: "&8✦ &e&lHướng dẫn Nhiệm vụ &8✦"
+    rows: 4
+    items:
+      step1:
+        slot: 10
+        material: CLOCK
+        name: "&e1. Nhiệm vụ ngày"
+        lore:
+          - "&7Làm mới mỗi ngày. Mở bằng &f/quest"
+      step2:
+        slot: 11
+        material: CALENDAR
+        name: "&e2. Nhiệm vụ tuần"
+        lore:
+          - "&7Làm mới mỗi tuần, thưởng lớn hơn."
+      step3:
+        slot: 12
+        material: DIAMOND_SWORD
+        name: "&e3. Nhiệm vụ PvP"
+        lore:
+          - "&7Hạ gục người chơi (có chống farm)."
+      step4:
+        slot: 13
+        material: EMERALD
+        name: "&e4. Nhận thưởng"
+        lore:
+          - "&7Bấm vào nhiệm vụ đã xong, hoặc"
+          - "&f/quest claimall&7. Thưởng: tiền, Token,"
+          - "&7Quest EXP, vật phẩm, danh hiệu."
+      step5:
+        slot: 14
+        material: EXPERIENCE_BOTTLE
+        name: "&e5. Cấp Quest"
+        lore:
+          - "&f/quest profile &7- hồ sơ"
+          - "&f/quest tokens &7- Astrax Token"
+          - "&f/quest top &7- xếp hạng"
+      back:
+        slot: 27
+        material: ARROW
+        name: "&c« Quay lại"
+        actions: ["[open] guide"]
+      book:
+        slot: 31
+        material: WRITABLE_BOOK
+        glow: true
+        name: "&a&lĐọc sách hướng dẫn"
+        lore:
+          - "&7Bản đầy đủ dạng sách."
+          - " "
+          - "&eNhấp để đọc"
+        actions: ["[book] quest"]
+      open:
+        slot: 35
+        material: LIME_DYE
+        name: "&a&lMở Nhiệm vụ"
+        lore:
+          - "&7Chạy lệnh &f/quest"
+          - " "
+          - "&eNhấp để mở"
+        actions: ["[close]", "[player] quest"]
+
+  g_titles:
+    title: "&8✦ &6&lHướng dẫn Danh hiệu &8✦"
+    rows: 4
+    items:
+      step1:
+        slot: 10
+        material: NAME_TAG
+        name: "&e1. Danh hiệu là gì"
+        lore:
+          - "&7Hiện trước tên trong Tab, mỗi cái có"
+          - "&7buff và nội tại riêng."
+      step2:
+        slot: 11
+        material: MAP
+        name: "&e2. Mở khóa"
+        lore:
+          - "&7Hoàn thành nhiệm vụ của danh hiệu."
+          - "&7Danh hiệu chưa mở hiện tiến độ trong"
+          - "&f/title&7."
+      step3:
+        slot: 12
+        material: ANVIL
+        name: "&e3. Đeo / gỡ"
+        lore:
+          - "&7Bấm danh hiệu đã mở để đeo, bấm lại để gỡ."
+          - "&f/title off &7: gỡ nhanh."
+      step4:
+        slot: 13
+        material: DIAMOND
+        name: "&e4. Danh hiệu VIP"
+        lore:
+          - "&7Mở khóa khi có rank VIP3 trở lên."
+      step5:
+        slot: 14
+        material: BELL
+        name: "&e5. Thông báo"
+        lore:
+          - "&7Danh hiệu hiếm báo toàn server khi mở."
+      back:
+        slot: 27
+        material: ARROW
+        name: "&c« Quay lại"
+        actions: ["[open] guide"]
+      book:
+        slot: 31
+        material: WRITABLE_BOOK
+        glow: true
+        name: "&a&lĐọc sách hướng dẫn"
+        lore:
+          - "&7Bản đầy đủ dạng sách."
+          - " "
+          - "&eNhấp để đọc"
+        actions: ["[book] titles"]
+      open:
+        slot: 35
+        material: LIME_DYE
+        name: "&a&lMở Danh hiệu"
+        lore:
+          - "&7Chạy lệnh &f/title"
+          - " "
+          - "&eNhấp để mở"
+        actions: ["[close]", "[player] title"]
+
+  g_team:
+    title: "&8✦ &a&lHướng dẫn Team &8✦"
+    rows: 4
+    items:
+      step1:
+        slot: 10
+        material: WHITE_BANNER
+        name: "&e1. Tạo team"
+        lore:
+          - "&f/team create <tên>"
+          - "&7Mở menu: &f/team"
+      step2:
+        slot: 11
+        material: WRITABLE_BOOK
+        name: "&e2. Mời & quản lý"
+        lore:
+          - "&f/team invite <tên> &7- mời"
+          - "&f/team accept &7/ &fdeny"
+          - "&f/team kick, leave, promote, demote"
+      step3:
+        slot: 12
+        material: PLAYER_HEAD
+        name: "&e3. Chat & PvP"
+        lore:
+          - "&f/tc &7bật/tắt chat team"
+          - "&f/team pvp &7bật/tắt đánh đồng đội"
+      step4:
+        slot: 13
+        material: GRASS_BLOCK
+        name: "&e4. Khu vực"
+        lore:
+          - "&f/team zones &7- xem khu vực"
+          - "&f/team claim <zone> &7- chiếm khu"
+      step5:
+        slot: 14
+        material: IRON_SWORD
+        name: "&e5. Team war"
+        lore:
+          - "&f/team war declare <team>"
+          - "&7Thắng war nhận điểm cho team."
+      step6:
+        slot: 15
+        material: GOLD_INGOT
+        name: "&e6. Xếp hạng"
+        lore:
+          - "&f/team top [points|kills|wins]"
+          - "&7Top 1-5 nhận buff."
+      back:
+        slot: 27
+        material: ARROW
+        name: "&c« Quay lại"
+        actions: ["[open] guide"]
+      book:
+        slot: 31
+        material: WRITABLE_BOOK
+        glow: true
+        name: "&a&lĐọc sách hướng dẫn"
+        lore:
+          - "&7Bản đầy đủ dạng sách."
+          - " "
+          - "&eNhấp để đọc"
+        actions: ["[book] team"]
+      open:
+        slot: 35
+        material: LIME_DYE
+        name: "&a&lMở Team"
+        lore:
+          - "&7Chạy lệnh &f/team"
+          - " "
+          - "&eNhấp để mở"
+        actions: ["[close]", "[player] team"]
+
+  commands:
+    title: "&8✦ &d&lDanh sách lệnh &8✦"
+    rows: 4
+    items:
+      c10:
+        slot: 10
+        material: CHEST
+        name: "&6Kit & Rank"
+        lore:
+          - "&f/kit &7- xem/nhận kit"
+          - "&f/rank &7- quyền lợi rank"
+          - "&f/menu &7- menu server"
+      c11:
+        slot: 11
+        material: BLAZE_POWDER
+        name: "&5Nguyên Tố RPG"
+        lore:
+          - "&f/elementer &7- menu"
+          - "&f/elementer skills | stats | top"
+          - "&f/elementer cast <1-3> | switch"
+          - "&f/elementer exchange | aura | wings"
+      c12:
+        slot: 12
+        material: AMETHYST_SHARD
+        name: "&dNguyên Tố Bay"
+        lore:
+          - "&f/nt &7- menu trang bị"
+          - "&f/nt stats &7- chỉ số buff"
+      c13:
+        slot: 13
+        material: CLOCK
+        name: "&eNhiệm vụ"
+        lore:
+          - "&f/quest &7(&f/nv&7) - menu"
+          - "&f/quest claimall | profile | tokens | top"
+      c14:
+        slot: 14
+        material: NAME_TAG
+        name: "&6Danh hiệu"
+        lore:
+          - "&f/title &7- menu"
+          - "&f/title equip <id> | off | list"
+      c15:
+        slot: 15
+        material: WHITE_BANNER
+        name: "&aTeam"
+        lore:
+          - "&f/team &7(&f/t&7) - menu"
+          - "&f/tc &7- chat team"
+          - "&f/team create | invite | accept | leave"
+          - "&f/team top | zones | war"
+      back:
+        slot: 27
+        material: ARROW
+        name: "&c« Quay lại"
+        actions: ["[open] main"]
+      close:
+        slot: 31
+        material: BARRIER
+        name: "&cĐóng"
+        actions: ["[close]"]
+
+  rules:
+    title: "&8✦ &c&lNội quy &8✦"
+    rows: 4
+    items:
+      r1:
+        slot: 11
+        material: RED_DYE
+        name: "&c1. Không gian lận"
+        lore:
+          - "&7Cấm hack, x-ray, auto-click, bug-dupe."
+      r2:
+        slot: 12
+        material: PLAYER_HEAD
+        name: "&c2. Tôn trọng người chơi"
+        lore:
+          - "&7Không chửi bới, spam, quấy rối."
+      r3:
+        slot: 13
+        material: TNT
+        name: "&c3. Không phá hoại"
+        lore:
+          - "&7Không grief, không lừa đảo/trộm đồ."
+      r4:
+        slot: 14
+        material: GOLDEN_SWORD
+        name: "&c4. PvP đúng chỗ"
+        lore:
+          - "&7Không farm điểm PvP bằng acc phụ."
+      r5:
+        slot: 15
+        material: PAPER
+        name: "&c5. Nghe theo Staff"
+        lore:
+          - "&7Quyết định của Admin/Mod là cuối cùng."
+      note:
+        slot: 22
+        material: BOOK
+        name: "&e(Admin: sửa nội quy trong menus.yml)"
+        lore:
+          - "&7Đây là nội quy MẪU."
+      back:
+        slot: 27
+        material: ARROW
+        name: "&c« Quay lại"
+        actions: ["[open] main"]
+      close:
+        slot: 31
+        material: BARRIER
+        name: "&cĐóng"
+        actions: ["[close]"]

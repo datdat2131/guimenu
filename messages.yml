@@ -1,0 +1,11 @@
+# Tin nhắn của AstraxMenu. Hỗ trợ &-code và &#rrggbb.
+prefix: "&8[&6BoxMine&8] "
+no-permission: "&cBạn không có quyền dùng lệnh này."
+players-only: "&cLệnh này chỉ dùng trong game."
+menu-not-found: "&cKhông có menu &e{menu}&c."
+book-not-found: "&cKhông có sách hướng dẫn &e{book}&c."
+rank-not-found: "&cKhông có rank &e{rank}&c. Gõ &e/rank&c để xem danh sách."
+rank-not-owned: "&cBạn chưa có rank &f{rank}&c nên chưa dùng được kit này."
+kit-missing: "&cRank này không có kit."
+reloaded: "&aĐã tải lại AstraxMenu &7({info})"
+player-not-found: "&cKhông thấy người chơi &e{player}&c."

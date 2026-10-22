@@ -1,0 +1,33 @@
+name: AstraxMenu
+version: ${project.version}
+main: vn.astrax.menu.AstraxMenuPlugin
+api-version: '1.21'
+author: Astrax
+description: Menu GUI giới thiệu, hướng dẫn và xem quyền lợi rank cho BoxMine RPG.
+softdepend: [PlaceholderAPI, Essentials, EssentialsX, LuckPerms]
+commands:
+  menu:
+    description: Mở menu server (giới thiệu, hướng dẫn).
+    usage: /<command> [tên menu]
+    aliases: [huongdan, guide, bxmenu]
+    permission: astraxmenu.use
+  rank:
+    description: Xem quyền lợi và kit của các rank.
+    usage: /<command> [rank|list]
+    aliases: [ranks, quyenloi]
+    permission: astraxmenu.rank
+  astraxmenu:
+    description: Quản trị AstraxMenu.
+    usage: /<command> <reload|list|open|check>
+    aliases: [amenu]
+    permission: astraxmenu.admin
+permissions:
+  astraxmenu.use:
+    description: Dùng /menu.
+    default: true
+  astraxmenu.rank:
+    description: Dùng /rank.
+    default: true
+  astraxmenu.admin:
+    description: Dùng /astraxmenu.
+    default: op
